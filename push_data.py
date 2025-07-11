@@ -50,6 +50,7 @@ class NetworkDataExtract():
         except Exception as e:
             raise NetworkSecurityException(e,sys)
 
+""" 
 if __name__ == '__main__':
     FILE_PATH = "Network_data\phisingData.csv"
     DATABASE = "ARYAN"
@@ -59,5 +60,5 @@ if __name__ == '__main__':
     print(records)
     no_of_records = networkobj.insert_data_to_mongodb(records,DATABASE,Collection)
     print(no_of_records)
-
+"""
 

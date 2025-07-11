@@ -1,7 +1,6 @@
 # ETL pipeline: Extract from csv->Transform to json->Load on MongoDB
 import os
 import sys
-import json 
 
 from dotenv import load_dotenv #used to call environment variables 
 load_dotenv()
@@ -12,7 +11,6 @@ import certifi  #used to make a secure http connection
 ca = certifi.where()   #ca - certificate authority
 
 import pandas as pd
-import numpy as np
 import pymongo
 from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.logging.logger import logging
@@ -39,7 +37,7 @@ class NetworkDataExtract():
             self.collection = collection
             self.records = records
 
-            self.mongo_client = pymongo.MongoClient(MONGO_DB_URL)
+            self.mongo_client = pymongo.MongoClient(MONGO_DB_URL,tlsCAFile = ca)
             self.database = self.mongo_client[self.database]
 
             self.collection = self.database[self.collection]

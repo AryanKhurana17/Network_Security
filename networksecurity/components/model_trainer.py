@@ -54,7 +54,8 @@ class ModelTrainer:
             mlflow.log_metric("f1_score",f1_score)
             mlflow.log_metric("precision",precision_score)
             mlflow.log_metric("recall_score",recall_score)
-            mlflow.sklearn.log_model(best_model,name = "model")
+            mlflow.sklearn.log_model(best_model, artifact_path="model")
+
             # Model registry does not work with file store
          #   if tracking_url_type_store != "file":
 
@@ -70,11 +71,11 @@ class ModelTrainer:
         
     def train_model(self,X_train,y_train,x_test,y_test):
         models = {
-                "Random Forest": RandomForestClassifier(verbose=1),
+                "Random Forest": RandomForestClassifier(verbose=0),
                 "Decision Tree": DecisionTreeClassifier(),
-                "Gradient Boosting": GradientBoostingClassifier(verbose=1),
+                "Gradient Boosting": GradientBoostingClassifier(verbose=0),
                 "Logistic Regression": LogisticRegression(verbose=1),
-                "AdaBoost": AdaBoostClassifier(),
+                "AdaBoost": AdaBoostClassifier(algorithm='SAMME'),
             }
         params={
             "Decision Tree": {
@@ -134,7 +135,7 @@ class ModelTrainer:
         os.makedirs(model_dir_path,exist_ok=True)
 
         Network_Model=NetworkModel(preprocessor=preprocessor,model=best_model)
-        save_object(self.model_trainer_config.trained_model_file_path,obj=NetworkModel)
+        save_object(self.model_trainer_config.trained_model_file_path,obj=Network_Model)
         #model pusher
         save_object("final_model/model.pkl",best_model)
         

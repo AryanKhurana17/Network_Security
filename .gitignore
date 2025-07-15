@@ -3,3 +3,5 @@ pdf
 .env
 test_mongodb.py
 main.py
+final_model
+Artifacts

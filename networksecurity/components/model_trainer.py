@@ -23,8 +23,14 @@ from sklearn.ensemble import (
 import mlflow 
 from urllib.parse import urlparse
 
+import os
 import dagshub
+
+if 'DAGSHUB_USER_TOKEN' in os.environ:
+    os.environ['DAGSHUB_TOKEN'] = os.environ['DAGSHUB_USER_TOKEN']
+
 dagshub.init(repo_owner='AryanKhurana17', repo_name='Network_Security', mlflow=True)
+
 
 class ModelTrainer:
     def __init__(self,model_trainer_config:ModelTrainerConfig,data_transformation_artifact:DataTransformationArtifact):

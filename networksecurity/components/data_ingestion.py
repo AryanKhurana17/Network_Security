@@ -37,7 +37,7 @@ class DataIngestion:
             collection=self.mongo_client[database_name][collection_name]
 
             df=pd.DataFrame(list(collection.find()))
-            if "_id" in df.columns.to_list():                 ##
+            if "_id" in df.columns.to_list():                 
                 df=df.drop(columns=["_id"],axis=1)
             
             df.replace({"na":np.nan},inplace=True)
@@ -65,10 +65,6 @@ class DataIngestion:
                 dataframe, test_size=self.data_ingestion_config.train_test_split_ratio
             )
             logging.info("Performed train test split on the dataframe")
-
-            logging.info(
-                "Exited split_data_as_train_test method of Data_Ingestion class"
-            )
             
             dir_path = os.path.dirname(self.data_ingestion_config.training_file_path)
             

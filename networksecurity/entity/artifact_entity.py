@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+# automatically creates __init__, __repr__, __eq__ methods . 
 
 @dataclass
 class DataIngestionArtifact:

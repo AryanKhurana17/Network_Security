@@ -32,7 +32,6 @@ This project focuses on creating a reliable foundation for network security data
 - Pandas, NumPy (data manipulation)
 - Docker (containerization)
 - GitHub Actions (CI/CD automation)
-- Additional supporting libraries for PDF parsing, network log analysis, and frontend (if applicable)
 
 ## Setup and Usage
 
@@ -96,3 +95,4 @@ This project focuses on creating a reliable foundation for network security data
 ## Contribution and Support
 
 Contributions and suggestions are welcome! Please open issues or submit pull requests on GitHub. For any questions or support, feel free to contact me.
+
